@@ -1,6 +1,4 @@
-/* 3. Airline Performance: Analysing the performance of Airlines, based on;
-a. highest passenger count on each route
-b. highest flight operations on each route */
+
     
 WITH RankedPassengerCounts AS (
     SELECT DISTINCT
