@@ -187,14 +187,14 @@ DESC flights;
 INSERT INTO Flights (flight_id, flight_airline_id, flight_route_id, flight_aircraft_id, flight_date, departure_time, 
 arrival_time, passenger_count)
 SELECT
-    NULL,
-    RAND() * 9 + 1,
-    RAND() * 30 + 1,
-    RAND() * 14 + 1, 
-    DATE_ADD('2023-01-01', INTERVAL ROUND(RAND() * 89) DAY),
-    SEC_TO_TIME(RAND() * 86400), 
-    SEC_TO_TIME(RAND() * 86400 + 3600), 
-    ROUND(RAND() * 150) 
+    NULL flight_id,
+    ROUND(GREATEST(1,RAND() * 9)) flight_airline_id,
+    ROUND(GREATEST(1,RAND() * 30)) flight_route_id,
+    ROUND(GREATEST(1,RAND() * 14)) flight_aircraft_id, 
+    DATE_ADD('2023-01-01', INTERVAL ROUND(RAND() * 89) DAY) flight_date,
+    SEC_TO_TIME(RAND() * 86400) departure_time, 
+    SEC_TO_TIME(RAND() * 86400 + 3600) arrival_time, 
+    ROUND(RAND() * 150) passenger_count 
 FROM
     information_schema.tables t1,
     information_schema.tables t2
@@ -204,7 +204,6 @@ DESC flights;
 
 SELECT *
 FROM flights;
-
 
 
 
